@@ -1,0 +1,76 @@
+2026-11-15 13:43:52 | INFO    | ===========================================================================
+2026-11-15 13:43:52 | INFO    | 🚀 STARTING NYC TAXI DATA PIPELINE (rule_version=2.0.0, force=False)
+2026-11-15 13:43:52 | INFO    | ===========================================================================
+2026-11-15 13:43:52 | INFO    | [INGEST-REF] Downloading reference CSV from https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv
+2026-11-15 13:43:52 | INFO    | [VALIDATED-REF] taxi_zone_lookup.csv loaded successfully (265 zones).
+2026-11-15 13:43:52 | INFO    | [PLAN] Total partitions requested: 24 | To process: 24 | Skipped (cached): 0
+2026-11-15 13:43:52 | INFO    | [PROCESSED] green_2024-01   | raw=    56,551 | sub1_clean=    56,369 | sub2_clean=    56,367 | dropped=   184 | time=0.37s
+2026-11-15 13:43:55 | INFO    | [PROCESSED] fhv_2024-01     | raw= 1,290,116 | sub1_clean= 1,290,116 | sub2_clean= 1,289,685 | dropped=   431 | time=3.35s
+2026-11-15 13:43:57 | INFO    | [PROCESSED] yellow_2024-01  | raw= 2,964,624 | sub1_clean= 2,927,120 | sub2_clean= 2,927,091 | dropped=37,533 | time=4.93s
+2026-11-15 13:43:57 | INFO    | [PROCESSED] green_2024-02   | raw=    53,577 | sub1_clean=    53,405 | sub2_clean=    53,405 | dropped=   172 | time=0.19s
+2026-11-15 13:43:57 | INFO    | [PROCESSED] yellow_2024-02  | raw= 3,007,526 | sub1_clean= 2,966,864 | sub2_clean= 2,966,850 | dropped=40,676 | time=2.08s
+2026-11-15 13:43:57 | INFO    | [PROCESSED] fhv_2024-02     | raw= 1,176,093 | sub1_clean= 1,176,093 | sub2_clean= 1,175,314 | dropped=   779 | time=0.38s
+2026-11-15 13:43:58 | INFO    | [PROCESSED] fhvhv_2024-01   | raw=19,663,930 | sub1_clean=19,663,739 | sub2_clean=19,663,739 | dropped=   191 | time=5.65s
+2026-11-15 13:43:59 | INFO    | [PROCESSED] green_2024-03   | raw=    57,457 | sub1_clean=    57,261 | sub2_clean=    57,260 | dropped=   197 | time=0.7s
+2026-11-15 13:44:00 | INFO    | [PROCESSED] yellow_2024-03  | raw= 3,582,628 | sub1_clean= 3,524,047 | sub2_clean= 3,524,026 | dropped=58,602 | time=2.48s
+2026-11-15 13:44:00 | INFO    | [PROCESSED] fhv_2024-03     | raw= 1,469,352 | sub1_clean= 1,469,352 | sub2_clean= 1,468,681 | dropped=   671 | time=1.66s
+2026-11-15 13:44:04 | INFO    | [PROCESSED] fhvhv_2024-02   | raw=19,359,148 | sub1_clean=19,350,636 | sub2_clean=19,350,636 | dropped= 8,512 | time=6.43s
+2026-11-15 13:44:04 | INFO    | [PROCESSED] green_2024-04   | raw=    56,471 | sub1_clean=    56,258 | sub2_clean=    56,258 | dropped=   213 | time=0.25s
+2026-11-15 13:44:04 | INFO    | [PROCESSED] yellow_2024-04  | raw= 3,514,289 | sub1_clean= 3,456,651 | sub2_clean= 3,456,621 | dropped=57,668 | time=4.12s
+2026-11-15 13:44:06 | INFO    | [PROCESSED] fhv_2024-04     | raw= 1,444,626 | sub1_clean= 1,444,626 | sub2_clean= 1,444,521 | dropped=   105 | time=2.05s
+2026-11-15 13:44:08 | INFO    | [PROCESSED] fhvhv_2024-03   | raw=21,280,788 | sub1_clean=21,279,708 | sub2_clean=21,279,708 | dropped= 1,080 | time=7.78s
+2026-11-15 13:44:09 | INFO    | [PROCESSED] yellow_2024-05  | raw= 3,723,833 | sub1_clean= 3,663,844 | sub2_clean= 3,663,822 | dropped=60,011 | time=2.59s
+2026-11-15 13:44:10 | INFO    | [PROCESSED] fhv_2024-05     | raw= 1,352,502 | sub1_clean= 1,352,502 | sub2_clean= 1,352,347 | dropped=   155 | time=1.05s
+2026-11-15 13:44:11 | INFO    | [PROCESSED] fhvhv_2024-04   | raw=19,733,038 | sub1_clean=19,732,365 | sub2_clean=19,732,365 | dropped=   673 | time=6.23s
+2026-11-15 13:44:11 | INFO    | [PROCESSED] green_2024-05   | raw=    61,003 | sub1_clean=    60,781 | sub2_clean=    60,779 | dropped=   224 | time=3.92s
+2026-11-15 13:44:13 | INFO    | [PROCESSED] green_2024-06   | raw=    54,748 | sub1_clean=    54,564 | sub2_clean=    54,564 | dropped=   184 | time=1.43s
+2026-11-15 13:44:14 | INFO    | [PROCESSED] yellow_2024-06  | raw= 3,539,193 | sub1_clean= 3,477,520 | sub2_clean= 3,477,491 | dropped=61,702 | time=3.65s
+2026-11-15 13:44:15 | INFO    | [PROCESSED] fhvhv_2024-05   | raw=20,704,538 | sub1_clean=20,704,272 | sub2_clean=20,704,272 | dropped=   266 | time=5.27s
+2026-11-15 13:44:15 | INFO    | [PROCESSED] fhv_2024-06     | raw= 1,386,539 | sub1_clean= 1,386,539 | sub2_clean= 1,386,459 | dropped=    80 | time=2.41s
+2026-11-15 13:44:19 | INFO    | [PROCESSED] fhvhv_2024-06   | raw=20,123,226 | sub1_clean=20,123,027 | sub2_clean=20,123,027 | dropped=   199 | time=4.88s
+2026-11-15 13:44:22 | INFO    | [CURATED] Saved monthly curated dataset (24 rows) -> /Users/fn/Desktop/CS341_Taxi/data/curated/curated_monthly_summary.parquet
+2026-11-15 13:44:22 | INFO    | [CURATED] Saved zone-enriched borough dataset (184 rows) -> /Users/fn/Desktop/CS341_Taxi/data/curated/curated_borough_summary.parquet
+2026-11-15 13:44:22 | INFO    | [CURATED] Saved sample row-level curated trips (1200 rows) -> /Users/fn/Desktop/CS341_Taxi/data/curated/sample_curated_trips.csv
+2026-11-15 13:44:22 | INFO    | [DQ-REPORT] Saved Data Quality report -> /Users/fn/Desktop/CS341_Taxi/outputs/data_quality_report.csv & /Users/fn/Desktop/CS341_Taxi/outputs/data_quality_summary.json
+2026-11-15 13:44:22 | INFO    | ---------------------------------------------------------------------------
+2026-11-15 13:44:22 | INFO    | ✅ PIPELINE COMPLETED SUCCESSFULLY in 30.52s (Processed: 24, Skipped: 0)
+2026-11-15 13:44:22 | INFO    | 📊 Total Raw Rows: 149,655,796 | Sub1 Baseline Clean: 149,327,659 | Sub2 Strict Clean: 149,325,288
+2026-11-15 13:44:22 | INFO    | ===========================================================================
+2026-11-15 13:44:35 | INFO    | ===========================================================================
+2026-11-15 13:44:35 | INFO    | 🚀 STARTING NYC TAXI DATA PIPELINE (rule_version=2.0.0, force=False)
+2026-11-15 13:44:35 | INFO    | ===========================================================================
+2026-11-15 13:44:35 | INFO    | [INGEST-REF] Using cached reference CSV at /Users/fn/Desktop/CS341_Taxi/data/reference/taxi_zone_lookup.csv
+2026-11-15 13:44:35 | INFO    | [VALIDATED-REF] taxi_zone_lookup.csv loaded successfully (265 zones).
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] yellow_2024-01  | Already processed at 2026-11-15T06:43:57.191140+00:00 (clean_rows=2,927,091)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] green_2024-01   | Already processed at 2026-11-15T06:43:52.640504+00:00 (clean_rows=56,367)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhv_2024-01     | Already processed at 2026-11-15T06:43:55.618585+00:00 (clean_rows=1,289,685)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhvhv_2024-01   | Already processed at 2026-11-15T06:43:58.296512+00:00 (clean_rows=19,663,739)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] yellow_2024-02  | Already processed at 2026-11-15T06:43:57.698262+00:00 (clean_rows=2,966,850)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] green_2024-02   | Already processed at 2026-11-15T06:43:57.386160+00:00 (clean_rows=53,405)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhv_2024-02     | Already processed at 2026-11-15T06:43:57.763527+00:00 (clean_rows=1,175,314)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhvhv_2024-02   | Already processed at 2026-11-15T06:44:04.127457+00:00 (clean_rows=19,350,636)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] yellow_2024-03  | Already processed at 2026-11-15T06:44:00.249101+00:00 (clean_rows=3,524,026)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] green_2024-03   | Already processed at 2026-11-15T06:43:58.998663+00:00 (clean_rows=57,260)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhv_2024-03     | Already processed at 2026-11-15T06:44:00.663119+00:00 (clean_rows=1,468,681)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhvhv_2024-03   | Already processed at 2026-11-15T06:44:08.027751+00:00 (clean_rows=21,279,708)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] yellow_2024-04  | Already processed at 2026-11-15T06:44:04.786833+00:00 (clean_rows=3,456,621)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] green_2024-04   | Already processed at 2026-11-15T06:44:04.380216+00:00 (clean_rows=56,258)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhv_2024-04     | Already processed at 2026-11-15T06:44:06.432060+00:00 (clean_rows=1,444,521)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhvhv_2024-04   | Already processed at 2026-11-15T06:44:11.022203+00:00 (clean_rows=19,732,365)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] yellow_2024-05  | Already processed at 2026-11-15T06:44:09.025504+00:00 (clean_rows=3,663,822)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] green_2024-05   | Already processed at 2026-11-15T06:44:11.947483+00:00 (clean_rows=60,779)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhv_2024-05     | Already processed at 2026-11-15T06:44:10.077271+00:00 (clean_rows=1,352,347)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhvhv_2024-05   | Already processed at 2026-11-15T06:44:15.352697+00:00 (clean_rows=20,704,272)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] yellow_2024-06  | Already processed at 2026-11-15T06:44:14.674985+00:00 (clean_rows=3,477,491)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] green_2024-06   | Already processed at 2026-11-15T06:44:13.377449+00:00 (clean_rows=54,564)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhv_2024-06     | Already processed at 2026-11-15T06:44:15.793637+00:00 (clean_rows=1,386,459)
+2026-11-15 13:44:35 | INFO    | [SKIP-IDEMPOTENT] fhvhv_2024-06   | Already processed at 2026-11-15T06:44:19.558570+00:00 (clean_rows=20,123,027)
+2026-11-15 13:44:35 | INFO    | [PLAN] Total partitions requested: 24 | To process: 0 | Skipped (cached): 24
+2026-11-15 13:44:35 | INFO    | [CURATED] Saved monthly curated dataset (24 rows) -> /Users/fn/Desktop/CS341_Taxi/data/curated/curated_monthly_summary.parquet
+2026-11-15 13:44:35 | INFO    | [CURATED] Saved zone-enriched borough dataset (184 rows) -> /Users/fn/Desktop/CS341_Taxi/data/curated/curated_borough_summary.parquet
+2026-11-15 13:44:35 | INFO    | [CURATED] Saved sample row-level curated trips (1200 rows) -> /Users/fn/Desktop/CS341_Taxi/data/curated/sample_curated_trips.csv
+2026-11-15 13:44:35 | INFO    | [DQ-REPORT] Saved Data Quality report -> /Users/fn/Desktop/CS341_Taxi/outputs/data_quality_report.csv & /Users/fn/Desktop/CS341_Taxi/outputs/data_quality_summary.json
+2026-11-15 13:44:35 | INFO    | ---------------------------------------------------------------------------
+2026-11-15 13:44:35 | INFO    | ✅ PIPELINE COMPLETED SUCCESSFULLY in 0.04s (Processed: 0, Skipped: 24)
+2026-11-15 13:44:35 | INFO    | 📊 Total Raw Rows: 149,655,796 | Sub1 Baseline Clean: 149,327,659 | Sub2 Strict Clean: 149,325,288
+2026-11-15 13:44:35 | INFO    | ===========================================================================

@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-11-15T06:44:35.946448+00:00",
+  "rule_version": "2.0.0",
+  "total_files_checked": 24,
+  "all_schemas_valid": true,
+  "total_raw_rows": 149655796,
+  "submission1_baseline_clean_rows": 149327659,
+  "submission1_baseline_dropped_rows": 328137,
+  "submission2_strict_clean_rows": 149325288,
+  "submission2_strict_dropped_rows": 330508,
+  "additional_anomalies_caught_in_sub2": 2371,
+  "anomaly_breakdown_by_reason": {
+    "null_timestamps": 0,
+    "negative_duration_dropoff_lt_pickup": 300,
+    "negative_or_null_distance_or_fare": 327837,
+    "out_of_h1_2024_date_range": 43,
+    "extreme_duration_gt_24h": 2328
+  }
+}

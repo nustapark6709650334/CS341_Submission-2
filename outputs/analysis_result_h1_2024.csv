@@ -1,0 +1,5 @@
+rank,taxi_type,sub2_strict_clean_trips,trip_market_share_pct,sub1_baseline_clean_trips,raw_trips,dropped_anomalies,retention_rate_pct,total_duration_hours,duration_market_share_pct,avg_duration_minutes,total_distance_miles,avg_distance_miles,total_fare_usd,avg_fare_usd,top_pickup_borough
+1,fhvhv,120853747,80.93,120853747,120864668,10921,99.991,39945509.26,81.3,19.83,605943141.37,5.01,3101489310.35,25.66,Manhattan
+2,yellow,20015901,13.4,20016046,20332093,316192,98.4449,5643314.84,11.49,16.92,93495722.82,4.67,389606106.8,19.46,Manhattan
+3,fhv,8117007,5.44,8119228,8119228,2221,99.9726,3439686.51,7.0,25.43,,,,,Unknown
+4,green,338633,0.23,338638,339807,1174,99.6545,106641.89,0.22,18.9,5843735.89,17.26,6030711.39,17.81,Manhattan

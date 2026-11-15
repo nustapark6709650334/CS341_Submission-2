@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# macOS system files
+.DS_Store
+
+# Raw & large full-scale parquet files (exceed GitHub 100MB limit)
+data/raw/
+data/curated/trips_partitioned/
+
+# Assignment instruction PDF
+*.pdf
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
