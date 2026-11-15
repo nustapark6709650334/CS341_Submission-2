@@ -29,9 +29,11 @@ from src.config import (
     COLAB_DRIVE_PATH,
     CURATED_BOROUGH_CSV,
     CURATED_BOROUGH_PARQUET,
+    CURATED_BOROUGH_PARTS_DIR,
     CURATED_DIR,
     CURATED_MONTHLY_CSV,
     CURATED_MONTHLY_PARQUET,
+    CURATED_SAMPLE_PARTS_DIR,
     DQ_MAX_DATETIME,
     DQ_MAX_DURATION_MINUTES,
     DQ_MIN_DATETIME,
@@ -40,6 +42,7 @@ from src.config import (
     OUTPUTS_DIR,
     PIPELINE_LOG_PATH,
     PIPELINE_RULE_VERSION,
+    PROJECT_ROOT,
     RAW_DIR,
     REFERENCE_DIR,
     SAMPLE_CURATED_TRIPS_CSV,
@@ -80,8 +83,15 @@ def setup_logger() -> logging.Logger:
 
 
 def ensure_directories() -> None:
-    """สร้างโฟลเดอร์สำหรับเก็บข้อมูลแต่ละชั้น (Reference, Curated, Outputs)"""
-    for d in [RAW_DIR, REFERENCE_DIR, CURATED_DIR, OUTPUTS_DIR]:
+    """สร้างโฟลเดอร์สำหรับเก็บข้อมูลแต่ละชั้น (Reference, Curated, Partitions, Outputs)"""
+    for d in [
+        RAW_DIR,
+        REFERENCE_DIR,
+        CURATED_DIR,
+        CURATED_BOROUGH_PARTS_DIR,
+        CURATED_SAMPLE_PARTS_DIR,
+        OUTPUTS_DIR,
+    ]:
         d.mkdir(parents=True, exist_ok=True)
 
 
@@ -369,8 +379,15 @@ def process_single_partition(
     baseline_dropped = raw_rows - baseline_clean
     strict_dropped = raw_rows - strict_clean
 
+    # 6. บันทึกผลลัพธ์ที่คลีนแล้วของไฟล์นี้ลง Curated Partition Storage ทีละไฟล์ (ตามแนวคิด #idea การแก้ไข)
+    p_key = f"{taxi_type}_{year_month}"
+    b_path = CURATED_BOROUGH_PARTS_DIR / f"{p_key}.parquet"
+    s_path = CURATED_SAMPLE_PARTS_DIR / f"{p_key}.parquet"
+    borough_df.to_parquet(b_path, index=False)
+    sample_df.to_parquet(s_path, index=False)
+
     partition_result = {
-        "partition_key": f"{taxi_type}_{year_month}",
+        "partition_key": p_key,
         "file_name": f"{taxi_type}_tripdata_{year_month}.parquet",
         "taxi_type": taxi_type,
         "year_month": year_month,
@@ -415,8 +432,8 @@ def process_single_partition(
             else None
         ),
         "top_pickup_borough": top_borough,
-        "borough_breakdown": borough_df.to_dict(orient="records"),
-        "sample_records": sample_df.to_dict(orient="records"),
+        "curated_borough_partition": str(b_path.relative_to(PROJECT_ROOT)),
+        "curated_sample_partition": str(s_path.relative_to(PROJECT_ROOT)),
     }
     return partition_result
 
@@ -425,7 +442,7 @@ def materialize_curated_outputs(
     state: Dict[str, Any], logger: logging.Logger
 ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """
-    สร้างชุดข้อมูล Curated Output และรายงาน Data Quality จาก State ที่ผ่านการตรวจสอบแล้ว:
+    นำไฟล์ Curated รายไฟล์ที่เก็บไว้ใน data/curated/partitions/ มารวมเป็นชุดข้อมูลพร้อมวิเคราะห์:
     1. data/curated/curated_monthly_summary.parquet & .csv
     2. data/curated/curated_borough_summary.parquet & .csv
     3. data/curated/sample_curated_trips.parquet & .csv
@@ -463,28 +480,32 @@ def materialize_curated_outputs(
         f"[CURATED] Saved monthly curated dataset ({len(monthly_df)} rows) -> {CURATED_MONTHLY_PARQUET}"
     )
 
-    # 2. สร้าง Curated Borough Summary DataFrame (Multi-source joined output)
-    borough_rows = []
+    # 2. อ่านไฟล์ Curated รายไฟล์จาก data/curated/partitions/borough_by_file/ มารวมกัน
+    borough_frames = []
     for p in partitions:
-        borough_rows.extend(p.get("borough_breakdown", []))
-    borough_df = pd.DataFrame(borough_rows)
+        b_file = PROJECT_ROOT / p["curated_borough_partition"]
+        if b_file.exists():
+            borough_frames.append(pd.read_parquet(b_file))
+    borough_df = pd.concat(borough_frames, ignore_index=True) if borough_frames else pd.DataFrame()
     if not borough_df.empty:
         borough_df.to_parquet(CURATED_BOROUGH_PARQUET, index=False)
         borough_df.to_csv(CURATED_BOROUGH_CSV, index=False)
         logger.info(
-            f"[CURATED] Saved zone-enriched borough dataset ({len(borough_df)} rows) -> {CURATED_BOROUGH_PARQUET}"
+            f"[CURATED] Aggregated 24 per-file partitions into zone-enriched borough dataset ({len(borough_df)} rows) -> {CURATED_BOROUGH_PARQUET}"
         )
 
-    # 3. สร้าง Sample Curated Trips DataFrame (Row-level harmonized output)
-    sample_rows = []
+    # 3. อ่านไฟล์ Sample Curated รายไฟล์จาก data/curated/partitions/sample_by_file/ มารวมกัน
+    sample_frames = []
     for p in partitions:
-        sample_rows.extend(p.get("sample_records", []))
-    sample_df = pd.DataFrame(sample_rows)
+        s_file = PROJECT_ROOT / p["curated_sample_partition"]
+        if s_file.exists():
+            sample_frames.append(pd.read_parquet(s_file))
+    sample_df = pd.concat(sample_frames, ignore_index=True) if sample_frames else pd.DataFrame()
     if not sample_df.empty:
         sample_df.to_parquet(SAMPLE_CURATED_TRIPS_PARQUET, index=False)
         sample_df.to_csv(SAMPLE_CURATED_TRIPS_CSV, index=False)
         logger.info(
-            f"[CURATED] Saved sample row-level curated trips ({len(sample_df)} rows) -> {SAMPLE_CURATED_TRIPS_CSV}"
+            f"[CURATED] Aggregated 24 per-file partitions into sample row-level curated trips ({len(sample_df)} rows) -> {SAMPLE_CURATED_TRIPS_CSV}"
         )
 
     # 4. สร้างรายงาน Data Quality Report (CSV & JSON)

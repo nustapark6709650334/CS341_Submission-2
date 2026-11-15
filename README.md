@@ -106,6 +106,9 @@ CS341_Submission-2-/
 │   ├── reference/
 │   │   └── taxi_zone_lookup.csv               # ตารางอ้างอิงโซนแท็กซี่ NYC (265 โซน)
 │   └── curated/
+│       ├── partitions/                        # ไฟล์ Curated ที่คลีนและจัดเก็บแยกทีละไฟล์ (24 Partitions)
+│       │   ├── borough_by_file/*.parquet      # ข้อมูลสรุประดับเขตแยกตามไฟล์ (24 ไฟล์)
+│       │   └── sample_by_file/*.parquet       # ตัวอย่างข้อมูลระดับแถวที่คลีนแล้วแยกตามไฟล์ (24 ไฟล์)
 │       ├── curated_monthly_summary.parquet    # ชุดข้อมูลพร้อมใช้สรุปรายเดือน/ประเภทแท็กซี่ (Parquet)
 │       ├── curated_monthly_summary.csv        # ชุดข้อมูลพร้อมใช้สรุปรายเดือน/ประเภทแท็กซี่ (CSV)
 │       ├── curated_borough_summary.parquet    # ชุดข้อมูลพร้อมใช้ที่เชื่อมกับ Borough แล้ว (Parquet)

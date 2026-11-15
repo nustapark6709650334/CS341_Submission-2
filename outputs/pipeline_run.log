@@ -74,3 +74,18 @@
 2026-11-15 13:44:35 | INFO    | ✅ PIPELINE COMPLETED SUCCESSFULLY in 0.04s (Processed: 0, Skipped: 24)
 2026-11-15 13:44:35 | INFO    | 📊 Total Raw Rows: 149,655,796 | Sub1 Baseline Clean: 149,327,659 | Sub2 Strict Clean: 149,325,288
 2026-11-15 13:44:35 | INFO    | ===========================================================================
+2026-11-15 14:19:49 | INFO    | ===========================================================================
+2026-11-15 14:19:49 | INFO    | 🚀 STARTING NYC TAXI DATA PIPELINE (rule_version=2.0.0, force=True)
+2026-11-15 14:19:49 | INFO    | ===========================================================================
+2026-11-15 14:19:49 | INFO    | [INGEST-REF] Using cached reference CSV at /Users/fn/Desktop/CS341_Taxi/data/reference/taxi_zone_lookup.csv
+2026-11-15 14:19:49 | INFO    | [VALIDATED-REF] taxi_zone_lookup.csv loaded successfully (265 zones).
+2026-11-15 14:19:49 | INFO    | [PLAN] Total partitions requested: 1 | To process: 1 | Skipped (cached): 0
+2026-11-15 14:19:49 | INFO    | [PROCESSED] green_2024-06   | raw=    54,748 | sub1_clean=    54,564 | sub2_clean=    54,564 | dropped=   184 | time=0.41s
+2026-11-15 14:19:49 | INFO    | [CURATED] Saved monthly curated dataset (24 rows) -> /Users/fn/Desktop/CS341_Taxi/data/curated/curated_monthly_summary.parquet
+2026-11-15 14:19:49 | INFO    | [CURATED] Aggregated 24 per-file partitions into zone-enriched borough dataset (184 rows) -> /Users/fn/Desktop/CS341_Taxi/data/curated/curated_borough_summary.parquet
+2026-11-15 14:19:50 | INFO    | [CURATED] Aggregated 24 per-file partitions into sample row-level curated trips (1200 rows) -> /Users/fn/Desktop/CS341_Taxi/data/curated/sample_curated_trips.csv
+2026-11-15 14:19:50 | INFO    | [DQ-REPORT] Saved Data Quality report -> /Users/fn/Desktop/CS341_Taxi/outputs/data_quality_report.csv & /Users/fn/Desktop/CS341_Taxi/outputs/data_quality_summary.json
+2026-11-15 14:19:50 | INFO    | ---------------------------------------------------------------------------
+2026-11-15 14:19:50 | INFO    | ✅ PIPELINE COMPLETED SUCCESSFULLY in 0.64s (Processed: 1, Skipped: 0)
+2026-11-15 14:19:50 | INFO    | 📊 Total Raw Rows: 149,655,796 | Sub1 Baseline Clean: 149,327,659 | Sub2 Strict Clean: 149,325,288
+2026-11-15 14:19:50 | INFO    | ===========================================================================
